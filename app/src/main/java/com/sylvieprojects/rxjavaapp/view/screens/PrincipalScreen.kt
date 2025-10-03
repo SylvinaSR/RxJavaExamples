@@ -23,7 +23,8 @@ fun PrincipalScreen(
     navigateToOperadoresBOCO: () -> Unit,
     navigateTypeObservables: () -> Unit,
     navigateToSubjects: () -> Unit,
-    navigateToRxBus: () -> Unit
+    navigateToRxBus: () -> Unit,
+    navigateToBackPressure: () -> Unit
 ) {
     Scaffold { innerPadding ->
         LazyColumn(modifier = Modifier
@@ -126,6 +127,15 @@ fun PrincipalScreen(
                         navigateToRxBus()
                     }) {
                     Text(text = "RxBus")
+                }
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    onClick = {
+                        navigateToBackPressure()
+                    }) {
+                    Text(text = "BackPressure")
                 }
             }
         }

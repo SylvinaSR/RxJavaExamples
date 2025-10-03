@@ -37,3 +37,6 @@ object Subjects
 
 @Serializable
 object RxBus
+
+@Serializable
+object BackPressure

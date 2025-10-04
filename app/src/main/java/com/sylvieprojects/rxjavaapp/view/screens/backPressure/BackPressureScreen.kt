@@ -18,9 +18,28 @@ import java.util.concurrent.TimeUnit
 fun BackPressureScreen(modifier: Modifier = Modifier) {
 
     LaunchedEffect(Unit) {
-        backPressureBuffer()
+        backPressureDrop()
     }
 
+}
+
+private fun backPressureDrop() {
+    val source: Flowable<Long> = Flowable.interval(1, TimeUnit.MILLISECONDS)
+    Log.d("RxBP", "----------Drop----------")
+    source.onBackpressureDrop()
+        .observeOn(Schedulers.computation())
+        .subscribe(
+            { e ->
+                try {
+                    Log.d("RxBP", "Consumiendo observable: $e")
+                    Thread.sleep(100)
+                } catch (e: Exception) {
+
+                }
+            }, { error ->
+                Log.d("RxBP", "Error: $error")
+            }
+        )
 }
 
 private fun backPressureBuffer() {

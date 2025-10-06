@@ -10,6 +10,7 @@ import com.sylvieprojects.rxjavaapp.view.screens.IntroScreen
 import com.sylvieprojects.rxjavaapp.view.screens.operators.OperadoresScreen
 import com.sylvieprojects.rxjavaapp.view.screens.PrincipalScreen
 import com.sylvieprojects.rxjavaapp.view.screens.backPressure.BackPressureScreen
+import com.sylvieprojects.rxjavaapp.view.screens.coldAndHot.ColdAndHotScreen
 import com.sylvieprojects.rxjavaapp.view.screens.operators.sectionFive.OperadoresMOSOScreen
 import com.sylvieprojects.rxjavaapp.view.screens.operators.OperadoresSEIOScreen
 import com.sylvieprojects.rxjavaapp.view.screens.operators.OperadoresTOScreen
@@ -48,6 +49,8 @@ fun NavigationWrapper() {
                     navController.navigate(RxBus)
                 }, navigateToBackPressure = {
                     navController.navigate(BackPressure)
+                }, navigateToColdAndHot = {
+                    navController.navigate(ColdAndHot)
                 }
             )
         }
@@ -63,5 +66,6 @@ fun NavigationWrapper() {
         composable<Subjects> { SubjectsScreen() }
         composable<RxBus> { RxBusScreen() }
         composable<BackPressure> { BackPressureScreen() }
+        composable<ColdAndHot> { ColdAndHotScreen() }
     }
 }

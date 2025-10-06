@@ -40,3 +40,6 @@ object RxBus
 
 @Serializable
 object BackPressure
+
+@Serializable
+object ColdAndHot

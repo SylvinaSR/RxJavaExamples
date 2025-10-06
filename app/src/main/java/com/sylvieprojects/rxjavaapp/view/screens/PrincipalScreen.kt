@@ -24,7 +24,8 @@ fun PrincipalScreen(
     navigateTypeObservables: () -> Unit,
     navigateToSubjects: () -> Unit,
     navigateToRxBus: () -> Unit,
-    navigateToBackPressure: () -> Unit
+    navigateToBackPressure: () -> Unit,
+    navigateToColdAndHot: () -> Unit
 ) {
     Scaffold { innerPadding ->
         LazyColumn(modifier = Modifier
@@ -136,6 +137,15 @@ fun PrincipalScreen(
                         navigateToBackPressure()
                     }) {
                     Text(text = "BackPressure")
+                }
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    onClick = {
+                        navigateToColdAndHot()
+                    }) {
+                    Text(text = "Cold and Hot")
                 }
             }
         }

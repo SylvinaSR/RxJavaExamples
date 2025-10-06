@@ -4,13 +4,32 @@ import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.observables.ConnectableObservable
 import java.util.concurrent.TimeUnit
 
 @Composable
 fun ColdAndHotScreen() {
     LaunchedEffect(Unit) {
-        coldObservable()
+        hotObservable()
     }
+}
+
+private fun hotObservable() {
+    Log.d("Observable", "----------Hot----------")
+    val hot: ConnectableObservable<Long> =
+        Observable.interval(500, TimeUnit.MILLISECONDS).take(10).publish()
+    hot.connect()
+    hot.subscribe(
+        { e -> Log.d("Observable", "Subscriber 1: $e") }
+    )
+    try {
+        Thread.sleep(2000)
+    } catch (e: Exception) {
+
+    }
+    hot.subscribe(
+        { e -> Log.d("Observable", "Subscriber 2: $e") }
+    )
 }
 
 private fun coldObservable() {
